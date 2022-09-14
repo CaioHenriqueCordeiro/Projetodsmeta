@@ -3,7 +3,9 @@ package com.devsuperior.dsmeta.services;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Optional;
 
+import com.devsuperior.dsmeta.dto.SaleDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,5 +27,21 @@ public class SaleService {
 		LocalDate max = maxDate.equals("") ? today : LocalDate.parse(maxDate);
 		
 		return repository.findSales(min, max, pageable);
+	}
+
+	public Sale sendSale(SaleDto saleDto){
+
+		Sale sale = new Sale();
+		sale.setAmount(saleDto.getAmount());
+		sale.setVisited(saleDto.getVisited());
+		sale.setDate(saleDto.getDate());
+		sale.setDeals(saleDto.getDeals());
+		sale.setSellerName(saleDto.getSellerName());
+
+		return repository.save(sale);
+	}
+
+	public Optional<Sale> findSaleById(Long id){
+		return repository.findById(id);
 	}
 }
