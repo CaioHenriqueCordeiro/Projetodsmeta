@@ -60,7 +60,7 @@ function SalesCard() {
                             <th className="show992">Visitas</th>
                             <th className="show992">Vendas</th>
                             <th>Total</th>
-                            <th>Notificar</th>
+                            <th>Notificar via SMS</th>
                         </tr>
                     </thead>
                     <tbody>
