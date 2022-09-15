@@ -40,6 +40,7 @@ public class UserService {
         }
 
         User userFinal = userLogin.get();
+
         boolean valid = encoder.matches(pass, userFinal.getPassword());
 
         int status = (valid) ? HttpStatus.SC_OK : HttpStatus.SC_UNAUTHORIZED;
